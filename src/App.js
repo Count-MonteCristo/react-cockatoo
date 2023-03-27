@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./App.module.css";
+import { ReactComponent as Graphic } from "./todoList.svg";
 
 const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
 
@@ -23,6 +25,7 @@ function App() {
         const todos = result.records.map((item) => ({
           id: item.id,
           title: item.fields.Title,
+          createdTime: item.fields.Created,
         }));
 
         setTodoList([...todos]);
@@ -44,18 +47,70 @@ function App() {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   }
 
+  function getCurrentDate() {
+    const date = new Date();
+    const options = { month: "short", day: "numeric" };
+    return date.toLocaleString("en-US", options);
+  }
+
+  function CurrentDate() {
+    const currentDate = getCurrentDate();
+
+    return (
+      <div className={style.date}>
+        <h3 className={style.month}>{currentDate.split(" ")[0]}</h3>
+        <h3 className={style.day}>{currentDate.split(" ")[1]}</h3>
+      </div>
+    );
+  }
+
+  function Greeting() {
+    const date = new Date();
+    const hour = date.getHours();
+    let greeting;
+
+    if (hour < 12) {
+      greeting = "Good morning";
+    } else if (hour >= 12 && hour < 18) {
+      greeting = "Good afternoon";
+    } else {
+      greeting = "Good evening";
+    }
+
+    return (
+      <div>
+        <h1>{greeting}, Luis!</h1>
+        <h2>What's your plan for today?</h2>
+      </div>
+    );
+  }
+
   function appJSX() {
     return (
-      <>
-        <h1>Todo List</h1>
-        <AddTodoForm onAddTodo={addTodo} />
+      <div className={style.todoListContainer}>
+        <div className={style.flexContainer}>
+          <div className={style.imageContainer}>
+            <Graphic className={style.image} />
+          </div>
+          <div className={style.app}>
+            <div className={style.header}>
+              <CurrentDate />
+              <Greeting />
+            </div>
 
-        {isLoading ? (
-          <p>Loading ...</p>
-        ) : (
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-        )}
-      </>
+            <AddTodoForm onAddTodo={addTodo} />
+
+            {isLoading ? (
+              <p>Loading ...</p>
+            ) : (
+              <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+            )}
+            <div className={style.coloredStrip}>
+              <a href="https://storyset.com/work">Graphic by Storyset</a>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 

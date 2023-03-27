@@ -1,0 +1,47 @@
+.label {
+  display: none;
+}
+
+.input {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: rgb(73, 73, 73);
+  color: rgb(255, 255, 255);
+  border: 2px solid #f2c86b;
+  outline: none;
+  width: 600px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.2rem;
+}
+
+.input::placeholder {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: rgb(202, 202, 202);
+  letter-spacing: 0.2rem;
+}
+
+/*Responsiveness*/
+@media (max-width: 1024px) {
+  .input {
+    width: 510px;
+  }
+}
+
+@media (max-width: 768px) {
+  .input {
+    width: 350px;
+  }
+}
+
+@media (max-width: 425px) {
+  * {
+    font-size: 16px;
+  }
+  .input {
+    width: 330px;
+  }
+}

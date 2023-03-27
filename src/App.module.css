@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.todoListContainer {
+  position: relative;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 150px;
+  left: 230px;
+}
+
+.image {
+  width: 600px;
+  height: 600px;
+}
+
+.app {
+  max-height: 900px;
+  overflow: auto;
+  padding-bottom: 0px;
+  margin-left: 800px;
+  margin-top: 40px;
+}
+
+.app::-webkit-scrollbar {
+  width: 0;
+}
+
+.app::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.app::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+body {
+  background-color: #252525;
+}
+
+.app {
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.2rem;
+}
+
+h1 {
+  margin-bottom: -10px;
+}
+
+h2 {
+  color: #a2a2a2;
+  padding-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  padding-right: 30px;
+  margin-top: -20px;
+}
+
+.month {
+  margin-bottom: -10px;
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coloredStrip {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  background-color: #f2c86b;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #252525;
+  padding-top: 10px;
+}
+
+/*Responsiveness*/
+@media (max-width: 1440px) {
+  .imageContainer {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+  }
+
+  .image {
+    width: 400px;
+    height: 400px;
+  }
+
+  .app {
+    max-height: 500px;
+    overflow: auto;
+    padding-bottom: 40px;
+    margin-left: 600px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .imageContainer {
+    position: absolute;
+    top: 175px;
+    left: 80px;
+  }
+
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .app {
+    max-height: 500px;
+    overflow: auto;
+    padding-bottom: 40px;
+    margin-left: 450px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    position: absolute;
+    top: 200px;
+    left: 50px;
+  }
+
+  .image {
+    width: 250px;
+    height: 250px;
+  }
+
+  .app {
+    max-height: 500px;
+    overflow: auto;
+    padding-bottom: 40px;
+    margin-left: 350px;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+}
+
+/*Responsiveness*/
+@media (max-width: 425px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+
+  .app {
+    max-height: 750px;
+    overflow: auto;
+    padding-bottom: 40px;
+    margin-left: 20px;
+    margin-top: 40px;
+    font-size: 16px;
+  }
+  .coloredStrip {
+    display: none;
+  }
+}

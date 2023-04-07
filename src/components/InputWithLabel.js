@@ -23,6 +23,7 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
         name="title"
         value={todoTitle}
         onChange={handleTitleChange}
+        required
       />
     </div>
   );

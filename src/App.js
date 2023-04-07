@@ -4,12 +4,14 @@ import TodoList from "./components/TodoList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import style from "./App.module.css";
 import { ReactComponent as Graphic } from "./todoList.svg";
+import { ReactComponent as Icon } from "./swap-vertical-outline.svg";
 
-const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
+const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
 
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("ASC");
 
   useEffect(() => {
     const options = {
@@ -28,10 +30,32 @@ function App() {
           createdTime: item.fields.Created,
         }));
 
-        setTodoList([...todos]);
+        const sortedTodos = todos.sort((a, b) => {
+          if (sortOrder === "ASC") {
+            //ascending order
+            if (a.createdTime < b.createdTime) {
+              return -1;
+            } else if (a.createdTime > b.createdTime) {
+              return 1;
+            } else {
+              return 0;
+            }
+          } else {
+            //descending order
+            if (a.createdTime < b.createdTime) {
+              return 1;
+            } else if (a.createdTime > b.createdTime) {
+              return -1;
+            } else {
+              return 0;
+            }
+          }
+        });
+
+        setTodoList([...sortedTodos]);
         setIsLoading(false);
       });
-  }, []);
+  }, [sortOrder]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -85,6 +109,14 @@ function App() {
     );
   }
 
+  function handleSortToggle() {
+    if (sortOrder === "ASC") {
+      setSortOrder("DESC");
+    } else {
+      setSortOrder("ASC");
+    }
+  }
+
   function appJSX() {
     return (
       <div className={style.todoListContainer}>
@@ -99,6 +131,15 @@ function App() {
             </div>
 
             <AddTodoForm onAddTodo={addTodo} />
+            <button onClick={handleSortToggle}>
+              <div className={style.todoListHeader}>
+                <div className={style.headerLabel}>Your To-do List:</div>
+                <div className={style.iconWithLabel}>
+                  <p className={style.iconLabel}>Sort by Created Time</p>
+                  <Icon className={style.icon} />
+                </div>
+              </div>
+            </button>
 
             {isLoading ? (
               <p>Loading ...</p>

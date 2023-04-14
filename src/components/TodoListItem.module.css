@@ -46,6 +46,11 @@
   letter-spacing: 0.2rem;
 }
 
+.itemTitle {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
 p {
   font-size: 12px;
   margin-top: -0.1px;
@@ -56,5 +61,15 @@ p {
 @media (max-width: 425px) {
   .ListItem {
     width: 340px;
+  }
+
+  .itemTitle {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+  }
+
+  .button {
+    font-size: 14px;
+    padding-top: 5px;
   }
 }

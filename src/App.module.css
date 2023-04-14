@@ -1,5 +1,64 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+.headerNavigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  color: #f2c86b;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.logo {
+  color: #f2c86b;
+  width: 40px;
+  height: 40px;
+}
+
+.landingPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.landingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landingPageHeader {
+  padding-bottom: 50px;
+  font-size: 64px;
+}
+
+.landingPageText {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 32px;
+}
+
+.cta {
+  background-color: #f2c86b;
+  border: none;
+  border-radius: 5px;
+  color: rgb(73, 73, 73);
+  margin-left: auto;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.2rem;
+  max-width: 200px;
+  padding: 20px;
+  margin: 0;
+}
+
 .todoListContainer {
   position: relative;
 }
@@ -8,6 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  min-height: 675px;
 }
 
 .imageContainer {
@@ -26,7 +86,7 @@
   overflow: auto;
   padding-bottom: 0px;
   margin-left: 800px;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 .app::-webkit-scrollbar {
@@ -45,7 +105,8 @@ body {
   background-color: #252525;
 }
 
-.app {
+.app,
+.landingPage {
   color: rgb(255, 255, 255);
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.2rem;
@@ -113,7 +174,7 @@ button {
 .todoListHeader {
   display: flex;
   justify-content: space-between;
-  gap: 255px;
+  gap: 200px;
   padding-top: 30px;
 }
 
@@ -130,21 +191,24 @@ button {
 .icon {
   width: 30px;
   height: 30px;
-  padding-left: 15px;
   color: #f2c86b;
+  margin-top: -10px;
 }
 
 .iconLabel {
   color: rgb(255, 255, 255);
-  padding-top: 10px;
+  padding-top: 5px;
+  text-align: left;
+  width: 230px;
+  font-size: 16px;
 }
 
 /*Responsiveness*/
 @media (max-width: 1440px) {
   .imageContainer {
     position: absolute;
-    top: 100px;
-    left: 100px;
+    top: 150px;
+    left: 150px;
   }
 
   .image {
@@ -153,18 +217,17 @@ button {
   }
 
   .app {
-    max-height: 500px;
+    max-height: 600px;
     overflow: auto;
     padding-bottom: 40px;
     margin-left: 600px;
-    margin-top: 40px;
   }
 }
 
 @media (max-width: 1024px) {
   .imageContainer {
     position: absolute;
-    top: 175px;
+    top: 160px;
     left: 80px;
   }
 
@@ -174,38 +237,38 @@ button {
   }
 
   .app {
-    max-height: 500px;
+    max-height: 700px;
     overflow: auto;
     padding-bottom: 40px;
     margin-left: 450px;
-    margin-top: 40px;
+  }
+
+  .todoListHeader {
+    gap: 90px;
+  }
+
+  .headerLabel {
+    font-size:  14px;
+    width: 205px;
+    text-align: left;
   }
 }
 
 @media (max-width: 768px) {
-  .imageContainer {
-    position: absolute;
-    top: 200px;
-    left: 50px;
+
+  .headerNavigation {
+    justify-content: end;
+    padding-right: 20px;
   }
 
-  .image {
-    width: 250px;
-    height: 250px;
+  .landingPageHeader {
+    font-size: 48px;
   }
 
-  .app {
-    max-height: 500px;
-    overflow: auto;
-    padding-bottom: 40px;
-    margin-left: 350px;
-    margin-top: 40px;
-    font-size: 12px;
+  .landingPageText {
+    font-size: 24px;
   }
-}
 
-/*Responsiveness*/
-@media (max-width: 425px) {
   .flexContainer {
     flex-direction: column;
   }
@@ -214,13 +277,72 @@ button {
     display: none;
   }
 
+  .todoListHeader {
+    gap: 200px;
+  }
+
   .app {
     max-height: 750px;
     overflow: auto;
     padding-bottom: 40px;
-    margin-left: 20px;
-    margin-top: 40px;
+    margin: 0;
     font-size: 16px;
+  }
+
+  .icon {
+    margin-left: -20px;
+  }
+
+  .iconLabel {
+    font-size: 14px;
+  }
+
+  .coloredStrip {
+    display: none;
+  }
+}
+
+/*Responsiveness*/
+@media (max-width: 425px) {
+  
+  .landingPageHeader {
+    font-size: 42px;
+  }
+
+  .landingPageText {
+    font-size: 18px;
+  }
+
+  .flexContainer {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+
+  .todoListHeader {
+    gap: 160px;
+  }
+
+  .app {
+    max-height: 750px;
+    overflow: auto;
+    padding-bottom: 40px;
+    font-size: 16px;
+  }
+
+  .iconLabel {
+    display: none;
+  }
+  
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .headerLabel {
+    padding-bottom: 10px;
   }
   .coloredStrip {
     display: none;

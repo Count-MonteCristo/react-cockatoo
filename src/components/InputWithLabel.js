@@ -11,7 +11,10 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
 
   return (
     <div className={style.inputContainer}>
-      <label className={style.label} htmlFor="title">
+      <label
+        className={style.label}
+        htmlFor="title"
+      >
         {children}
       </label>
       <input

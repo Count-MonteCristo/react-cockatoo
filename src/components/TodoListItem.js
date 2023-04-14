@@ -22,7 +22,10 @@ function TodoListItem({ todo, onRemoveTodo }) {
           </span>
         </div>
 
-        <button className={style.button} onClick={() => onRemoveTodo(id)}>
+        <button
+          className={style.button}
+          onClick={() => onRemoveTodo(id)}
+        >
           Remove
         </button>
       </li>

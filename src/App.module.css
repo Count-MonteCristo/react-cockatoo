@@ -248,14 +248,13 @@ button {
   }
 
   .headerLabel {
-    font-size:  14px;
+    font-size: 14px;
     width: 205px;
     text-align: left;
   }
 }
 
 @media (max-width: 768px) {
-
   .headerNavigation {
     justify-content: end;
     padding-right: 20px;
@@ -304,7 +303,6 @@ button {
 
 /*Responsiveness*/
 @media (max-width: 425px) {
-  
   .landingPageHeader {
     font-size: 42px;
   }
@@ -335,7 +333,7 @@ button {
   .iconLabel {
     display: none;
   }
-  
+
   .icon {
     width: 25px;
     height: 25px;

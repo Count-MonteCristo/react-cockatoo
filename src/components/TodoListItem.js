@@ -18,11 +18,14 @@ function TodoListItem({ todo, onRemoveTodo }) {
           />
           <span style={{ textDecoration: isChecked ? "line-through" : "none" }}>
             {<p>{createdTime}</p>}
-            {title}
+            {<p className={style.itemTitle}>{title}</p>}
           </span>
         </div>
 
-        <button className={style.button} onClick={() => onRemoveTodo(id)}>
+        <button
+          className={style.button}
+          onClick={() => onRemoveTodo(id)}
+        >
           Remove
         </button>
       </li>

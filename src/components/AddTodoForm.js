@@ -27,7 +27,10 @@ function AddTodoForm({ onAddTodo }) {
       >
         Title
       </InputWithLabel>
-      <button className={style.addButton} type="submit">
+      <button
+        className={style.addButton}
+        type="submit"
+      >
         Add
       </button>
     </form>
